@@ -10,8 +10,10 @@ namespace Learner_API.DBContext
         {
         }
 
-
         public DbSet<Learner> SEA_LearnerSubscriber { get; set; }
+
+
+       
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

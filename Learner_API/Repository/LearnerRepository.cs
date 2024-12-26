@@ -12,10 +12,13 @@ namespace Learner_API.Repository
         public LearnerRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-        }     
+        }
 
         public async Task<bool> AddLearnerAsync(List<Learner> learner)
         {
+
+
+
             try
             {
                 _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
@@ -23,13 +26,13 @@ namespace Learner_API.Repository
                 return true;
 
             }
-            catch (Exception ex) 
-            { 
-            
+            catch (Exception ex)
+            {
+
                 return false;
 
             }
-            
+
         }
     }
 }
