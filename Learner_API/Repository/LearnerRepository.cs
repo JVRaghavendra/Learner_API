@@ -21,10 +21,19 @@ namespace Learner_API.Repository
 
             try
             {
-                _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
-                _appDbContext.SaveChanges();
-                return true;
+                await _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
 
+                var result = await _appDbContext.SaveChangesAsync();
+                //return result;
+
+                if(result == 0) 
+                { 
+                 return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {

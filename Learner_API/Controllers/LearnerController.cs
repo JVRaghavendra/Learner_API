@@ -18,7 +18,7 @@ namespace Learner_API.Controllers
 
         [HttpPost]
         [Route("AddLearnerAsync")]
-        public IActionResult Post([FromBody] LearnerModel learnerModel)
+        public async Task<IActionResult> Post([FromBody] List<LearnerModel> learnerModel)
         {
             try
             {
@@ -27,8 +27,11 @@ namespace Learner_API.Controllers
                     return StatusCode(StatusCodes.Status400BadRequest, ModelState);
                 }
                 // If you want to pass a single LearnerModel object to the method, you need to wrap it in a list:
-                var learners = _learnerService.AddLearnerAsync(new List<LearnerModel> { learnerModel });
-                return StatusCode(StatusCodes.Status201Created, "learner Details Added Succesfully");
+
+                var learners =await _learnerService.AddLearnerAsync(learnerModel);
+
+                //return StatusCode(StatusCodes.Status201Created, "learner Details Added Succesfully");
+                return Ok( learners);
             }
             catch (Exception)
             {

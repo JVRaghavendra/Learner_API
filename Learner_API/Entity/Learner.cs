@@ -15,7 +15,7 @@ namespace Learner_API.Entity
         public int? PeopleKey { get; set; }
         public string CourseID { get; set; }
         public string SessionID { get; set; }
-        public int? Status { get; set; }
+        public string Status { get; set; }
         public long? CompletionDate { get; set; }
         public int? SourceID { get; set; }
         public string SourceName { get; set; }
