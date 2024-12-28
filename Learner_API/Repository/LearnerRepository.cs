@@ -17,31 +17,63 @@ namespace Learner_API.Repository
         public async Task<bool> AddLearnerAsync(List<Learner> learner)
         {
 
+            //try
+            //{
+            //    await _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
 
+            //    var result = await _appDbContext.SaveChangesAsync();
+            //    //return result;
+
+            //    if (result > 0)
+            //    {
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    return false;
+
+            //}
 
             try
             {
-                await _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
+                // Filter out records where SourceName is "mylearning"
 
-                var result = await _appDbContext.SaveChangesAsync();
-                //return result;
+                var filteredLearners = learner.Where(l => l.SourceName?.ToLower() != "mylearning").ToList();
 
-                if(result == 0) 
-                { 
-                 return true;
+                if (filteredLearners.Any())
+                {
+                    await _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(filteredLearners);
+
+                    var result = await _appDbContext.SaveChangesAsync();
+
+                    return result > 0;
                 }
                 else
                 {
-                    return false;
+                    // No valid records to insert
+                    return true;
                 }
+
+
+
             }
             catch (Exception ex)
             {
-
+                // Log exception (if needed) and return false
+                Console.WriteLine($"An error occurred: {ex.Message}");
                 return false;
-
             }
+
+
 
         }
     }
 }
+
+

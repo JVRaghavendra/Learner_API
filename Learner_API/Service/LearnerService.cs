@@ -30,8 +30,8 @@ namespace Learner_API.Service
 
                     var entity = new Learner();
                     {
-                       
-                        entity.SubscriberID = Convert.ToInt64(model.SourceID);
+
+                        entity.SubscriberID = Convert.ToInt32(model.SourceID);
                         entity.TranscriptID = model.TranscriptID;
                         entity.LearnerID = model.Employee_ID;
                         entity.PeopleKey = model.People_Key;
@@ -41,7 +41,7 @@ namespace Learner_API.Service
                         entity.CompletionDate = model.CompletionDate;
                         entity.SourceID = model.SourceID;
                         entity.SourceName = model.SourceName;
-                        entity.SubscribedDateTime = DateTimeOffset.UtcNow; 
+                        entity.SubscribedDateTime = DateTimeOffset.UtcNow.UtcDateTime;
                         entity.Payload = JsonSerializer.Serialize(model);
                         entity.IsProcessed = false;
 
