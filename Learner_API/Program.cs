@@ -21,6 +21,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILearnerRepository, LearnerRepository>();
 builder.Services.AddScoped<ILearnerService, LearnerService>();
 
+builder.Services.AddScoped<ILearnerInfoRepository, LearnerInfoRepository>();
+builder.Services.AddScoped<ILearnerInfoService, LearnerInfoService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

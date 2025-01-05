@@ -22,6 +22,8 @@ namespace Learner_API.Controllers
         {
             try
             {
+                var respone = string.Empty;
+
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, ModelState);
@@ -30,8 +32,16 @@ namespace Learner_API.Controllers
 
                 var learners =await _learnerService.AddLearnerAsync(learnerModel);
 
-                //return StatusCode(StatusCodes.Status201Created, "learner Details Added Succesfully");
-                return Ok( learners);
+                if(learners = true)
+                {
+                    return Ok("success");
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, "invalid");
+                }
+
+              
             }
             catch (Exception)
             {

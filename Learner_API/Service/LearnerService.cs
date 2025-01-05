@@ -34,7 +34,7 @@ namespace Learner_API.Service
                         entity.SubscriberID = Convert.ToInt32(model.SourceID);
                         entity.TranscriptID = model.TranscriptID;
                         entity.LearnerID = model.Employee_ID;
-                        entity.PeopleKey = model.People_Key;
+                        entity.PeopleKey = model.PeopleKey;
                         entity.CourseID = model.CourseID;
                         entity.SessionID = model.SessionID;
                         entity.Status = model.Status;

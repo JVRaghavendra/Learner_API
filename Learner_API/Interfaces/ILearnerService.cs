@@ -9,6 +9,7 @@ namespace Learner_API.Interfaces
         // Task<IEnumerable<LearnerModel>> GetAllLearnersAsync();
         //  Task<LearnerModel?> GetLearnerByIdAsync(string transcriptId);
         Task<bool> AddLearnerAsync(List<LearnerModel> learnerModel);
+       
 
         //  Task<bool> UpdateLearnerAsync(LearnerModel learner);
         //   Task<bool> DeleteLearnerAsync(string transcriptId);

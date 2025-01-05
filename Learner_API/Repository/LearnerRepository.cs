@@ -15,30 +15,7 @@ namespace Learner_API.Repository
         }
 
         public async Task<bool> AddLearnerAsync(List<Learner> learner)
-        {
-
-            //try
-            //{
-            //    await _appDbContext.SEA_LearnerSubscriber.AddRangeAsync(learner);
-
-            //    var result = await _appDbContext.SaveChangesAsync();
-            //    //return result;
-
-            //    if (result > 0)
-            //    {
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    return false;
-
-            //}
+        {      
 
             try
             {
@@ -52,12 +29,20 @@ namespace Learner_API.Repository
 
                     var result = await _appDbContext.SaveChangesAsync();
 
-                    return result > 0;
+                    if( result > 0)
+                    {
+                        return true;
+
+                    }
+                    else 
+                    { 
+                        return false; 
+                    }
                 }
                 else
                 {
                     // No valid records to insert
-                    return true;
+                    return false;
                 }
 
 

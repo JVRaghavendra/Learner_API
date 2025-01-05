@@ -8,7 +8,7 @@ namespace Learner_API.Model
     {
         public string? TranscriptID { get; set; }
         public string? Employee_ID { get; set; }
-        public int? People_Key { get; set; }
+        public int? PeopleKey { get; set; }
         public string? CourseID { get; set; }
         public string? SessionID { get; set; }
         public string? Status { get; set; }
